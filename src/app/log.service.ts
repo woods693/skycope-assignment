@@ -12,6 +12,16 @@ export class LogService {
   getLogs(serviceNum: string): Observable<String[]>{
     //console.log(this.http.get<String[]]>(this.Url))
     //console.log(serviceNum);
+        //console.log(this.http.get<String[]]>(this.Url))
+    //console.log(serviceNum);
+        //console.log(this.http.get<String[]]>(this.Url))
+    //console.log(serviceNum);
+        //console.log(this.http.get<String[]]>(this.Url))
+    //console.log(serviceNum);
+        //console.log(this.http.get<String[]]>(this.Url))
+    //console.log(serviceNum);
+        //console.log(this.http.get<String[]]>(this.Url))
+    //console.log(serviceNum);
     return this.http.get<String[]>(this.Url.concat(serviceNum));
   }
   constructor(private http: HttpClient) { }
