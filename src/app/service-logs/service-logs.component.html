@@ -1,0 +1,21 @@
+<div class="dropdown">
+    <button class="dropbtn"> {{ selected_service | uppercase}}</button>
+    <div class="dropdown-content">
+        <a class="service" (click)="serviceSelector('service1')">Service 1</a>
+        <a class="service" (click)="serviceSelector('service2')">Service 2</a>
+    </div>
+</div>
+
+<input id="filter_keyword" [(ngModel)]="filter_keyword" placeholder="Enter a Filter">
+
+<input id="highlight_keyword" [(ngModel)]="highlight_keyword" placeholder="Enter a word to highlight">
+
+<div style="height:20em;width:75%;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;" *ngIf="logs">
+    <ul class="logs">
+        <div class="each_log" *ngFor="let item of logs">
+            <li *ngIf="item | filter:filter_keyword">
+                <div [innerHTML]="item | highlight:highlight_keyword"> {{ item }}</div>
+            </li>
+        </div>
+    </ul>
+</div>
