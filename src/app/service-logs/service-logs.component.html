@@ -9,18 +9,23 @@
 <input id="filter_keyword" [(ngModel)]="filter_keyword" placeholder="Enter a Filter">
 
 <input id="highlight_keyword" [(ngModel)]="highlight_keyword" placeholder="Enter a word to highlight">
-
-<div
-  infinite-scroll
-  [infiniteScrollDistance]="distance"
-  [infiniteScrollThrottle]="throttle">
-    <div style="height:20em;width:75%;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;" *ngIf="logs">
+<div class="scrolling-window">
+    <div 
+    infinite-scroll
+    [infiniteScrollDistance]="distance"
+    [infiniteScrollThrottle]="throttle"
+    (scrolled)="onScroll()"
+    *ngIf="infinite_logs">
         <ul class="logs">
-            <div class="each_log" *ngFor="let item of logs">
+            <div class="each_log" *ngFor="let item of infinite_logs">
                 <li *ngIf="item | filter:filter_keyword">
                     <div [innerHTML]="item | highlight:highlight_keyword"> {{ item }}</div>
                 </li>
             </div>
         </ul>
     </div>
-</div>
+
+
+
+</div>    
+

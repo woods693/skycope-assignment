@@ -46,3 +46,12 @@ ul > .each_log {
   
   /* Change the background color of the dropdown button when the dropdown content is shown */
   .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+
+  .scroll-window{
+    height:50em;
+    width:50%;
+    border:1px solid #ccc;
+    font:16px/26px Georgia, Garamond, Serif;
+    overflow:auto;
+  };

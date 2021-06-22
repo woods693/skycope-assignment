@@ -16,7 +16,10 @@ export class ServiceLogsComponent implements OnInit {
 
   //Logs that will be shown in the logViewer
   logs: string[] = []; //main array with all the logs from the backend
+  
   infinite_logs: string[] = [];
+  floor_multiplier = 1;
+  
   selected_service = "";
   filter_keyword = '';
   highlight_keyword = '';
@@ -27,6 +30,20 @@ export class ServiceLogsComponent implements OnInit {
   getLogs(serviceNumber: string): void{
     this.logService.getLogs(serviceNumber).subscribe(data => {
       this.logs = this.logs.concat((data as any).entry);
+      console.log(this.infinite_logs.length)
+      if (this.logs.length != 0){
+        //console.log(this.logs.length);
+        var endpoint = this.logs.length;
+        if (endpoint - (this.floor_multiplier * 100) < 0 ){
+          this.infinite_logs = this.logs.slice(0, -1);
+        }else{
+          this.infinite_logs = this.logs.slice(endpoint - (100*this.floor_multiplier), endpoint);
+        }
+
+      }
+      
+      //if (this.logs.length)
+      //this.infinite_logs = this.logs.slice()
       //console.log(this.logs.length);
       //console.log(this.logs[0]);
       //this.infinite_logs = this.logs.slice(this.logs.length/2, this.logs.length - 1);
@@ -45,9 +62,10 @@ export class ServiceLogsComponent implements OnInit {
     };
   };
 
-  onScroll(floor: number, ceiling: number): void{
+  onScroll(): void{
     //this.infinite_logs = this.infinite_logs.concat(this.logs.slice())
-
+    ++this.floor_multiplier;
+    console.log("floor multiplier" + this.floor_multiplier);
   };
 
   constructor( private logService: LogService ) { }
