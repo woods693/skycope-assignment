@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+
 import { LogService } from '../__services/log.service';
+
 import { interval } from 'rxjs';
+
 
 
 @Component({
@@ -12,7 +15,8 @@ import { interval } from 'rxjs';
 export class ServiceLogsComponent implements OnInit {
 
   //Logs that will be shown in the logViewer
-  logs: string[] = [];
+  logs: string[] = []; //main array with all the logs from the backend
+  
   selected_service = "";
   filter_keyword = '';
   highlight_keyword = '';
@@ -21,9 +25,8 @@ export class ServiceLogsComponent implements OnInit {
   getLogs(serviceNumber: string): void{
     this.logService.getLogs(serviceNumber).subscribe(data => {
       this.logs = this.logs.concat((data as any).entry);
-      //console.log(this.logs[1].split(" "));
     }); 
-  }
+  };
 
   serviceSelector(selected: string): void{
     if (this.selected_service != selected){
@@ -31,8 +34,8 @@ export class ServiceLogsComponent implements OnInit {
       this.selected_service = selected;
       //console.log(this.selected_service);
       interval(500).subscribe(() => this.getLogs(this.selected_service));
-    }
-  }
+    };
+  };
 
   constructor( private logService: LogService ) { }
 
