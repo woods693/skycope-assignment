@@ -30,14 +30,14 @@ export class ServiceLogsComponent implements OnInit {
   getLogs(serviceNumber: string): void{
     this.logService.getLogs(serviceNumber).subscribe(data => {
       this.logs = this.logs.concat((data as any).entry);
-      console.log(this.infinite_logs.length)
+      console.log(this.logs[0]);
       if (this.logs.length != 0){
         //console.log(this.logs.length);
         var endpoint = this.logs.length;
-        if (endpoint - (this.floor_multiplier * 100) < 0 ){
+        if (endpoint - (this.floor_multiplier * 50) < 0 ){
           this.infinite_logs = this.logs.slice(0, -1);
         }else{
-          this.infinite_logs = this.logs.slice(endpoint - (100*this.floor_multiplier), endpoint);
+          this.infinite_logs = this.logs.slice(endpoint - (50*this.floor_multiplier), endpoint);
         }
 
       }
