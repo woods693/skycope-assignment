@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-//import { Log } from './log';
-import { LogService } from '../log.service';
-//import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { LogService } from '../__services/log.service';
 import { interval } from 'rxjs';
 
 
