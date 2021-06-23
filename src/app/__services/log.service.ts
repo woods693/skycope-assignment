@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class LogService {
-  private Url = 'http://localhost:5000/';
+  private Url = 'http://localhost:5000/api/';
 
   //private logsUrl = 'api/logs';
   getLogs(serviceNum: string): Observable<String[]>{

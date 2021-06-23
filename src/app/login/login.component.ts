@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../__services/authentication.service'; 
-import { User } from '../__models/user';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,25 +16,21 @@ export class LoginComponent implements OnInit {
     password: ""
   };
 
-  constructor(private auth: AuthenticationService) { }
+  constructor(private auth: AuthenticationService, private router: Router) { }
 
   onLogin(): void{
     this.auth.login(this.user).subscribe(data => {
       localStorage.setItem('token', (data as any).result)
+      localStorage.setItem('username', (data as any).username)
+      this.router.navigate(['/logging']);
     });
   };
 
+  logging():  void{
+    console.log("After Logging Out " + localStorage['token'] + " " + localStorage['username']);
+  }
+
   ngOnInit(): void {
-  /*  
-    let sampleUser: any = {
-      username: 'user' as string,
-      password: 'user1' as string
-    };
-    
-    this.auth.login(sampleUser).subscribe(data => {
-      this.authentication = data
-      console.log(this.authentication)
-    });
- */
+
   };
 }

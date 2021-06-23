@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LogService } from '../__services/log.service';
 import { interval } from 'rxjs';
+import { AuthenticationService } from '../__services/authentication.service';
+import { Router } from '@angular/router';
 
 
 
@@ -26,7 +28,16 @@ export class ServiceLogsComponent implements OnInit {
     }); 
   };
 
+  onLogout(): void{
+    this.auth.logout().subscribe(data => {
+      localStorage.setItem('token', (data as any).result)
+      localStorage.setItem('logged-username', '')
+      this.router.navigate(['/login']);
+    })
+  };
+
   serviceSelector(selected: string): void{
+    console.log(localStorage['token'] + " " + localStorage['logged-username']);
     if (this.selected_service != selected){
       this.logs = [];
       this.selected_service = selected;
@@ -35,7 +46,11 @@ export class ServiceLogsComponent implements OnInit {
     };
   };
 
-  constructor( private logService: LogService ) { }
+  logging():  void{
+    console.log("After Logging in " + localStorage['token'] + " as user " + localStorage['username']);
+  }
+
+  constructor( private logService: LogService, private auth: AuthenticationService, private router: Router ) { }
 
   ngOnInit(): void {
 

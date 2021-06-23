@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+//import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 
@@ -29,10 +29,6 @@ import { LogService } from './__services/log.service';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot([
-      { path: 'login', component: LoginComponent},
-      { path: 'logging', component: ServiceLogsComponent}
-    ]),
   ],
   providers: [AuthenticationService, LogService],
   bootstrap: [AppComponent]

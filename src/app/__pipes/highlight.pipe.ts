@@ -9,7 +9,7 @@ export class HighlightPipe implements PipeTransform {
   constructor(private sanitizer: DomSanitizer){}
   transform(log: any, keyword: string ){
     if(keyword != ""){ 
-      return this.sanitizer.bypassSecurityTrustHtml(log.replace(new RegExp(`(${keyword})`, 'gi'), '<span style="background-color: yellow">' + `$1` + '</span>'));
+      return this.sanitizer.bypassSecurityTrustHtml(log.replace(new RegExp(`\\b(${keyword})\\b`, 'gi'), '<span style="background-color: yellow">' + `$1` + '</span>'));
     }
     return log;
   }

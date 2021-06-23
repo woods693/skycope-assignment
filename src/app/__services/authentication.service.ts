@@ -7,18 +7,21 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private Url = 'http://localhost:5000/api/login';
+  private Url = 'http://localhost:5000/api/';
 
   login(cred: any): Observable<any>{
-
-    return this.http.post<any>(this.Url, cred)
+    return this.http.post<any>(this.Url.concat('login'), cred)
   };
 
-  isLoggedIn(user: any){
-    if(localStorage.token){
-      console.log("Wow this actually worked")
+  logout(): Observable<any>{
+    return this.http.get<any>(this.Url.concat('logout'))
+  };
+  isLoggedIn(): boolean{
+    //console.log("Local Storage " + typeof(localStorage.token))
+    if(localStorage.token == "true"){
+      return true;
     }
-    console.log("Nope, didnt work")
+    return false;
   }
   constructor(private http: HttpClient) { }
 }
