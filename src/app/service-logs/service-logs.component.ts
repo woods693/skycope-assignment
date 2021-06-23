@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
 import { LogService } from '../__services/log.service';
-
 import { interval } from 'rxjs';
 
 
