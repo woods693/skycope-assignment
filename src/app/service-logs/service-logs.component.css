@@ -1,6 +1,8 @@
 body{
   height: 1000px;
+  width: 100%;
 }
+
 .container{
   height: 750px;
   align-content: center;
@@ -51,7 +53,6 @@ ul > .each_log {
 .dropdown:hover .dropdown-content {display: block;}
 
 /*Filter*/
-
 .filter img{
   width: 40px;
   height:40px;
