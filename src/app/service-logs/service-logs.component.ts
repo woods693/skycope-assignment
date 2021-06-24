@@ -17,7 +17,7 @@ export class ServiceLogsComponent implements OnInit {
   //Logs that will be shown in the logViewer
   logs: string[] = []; //main array with all the logs from the backend
   
-  selected_service = '';
+  selected_service = 'Select a Service';
   filter_keyword = '';
   highlight_keyword = '';
 

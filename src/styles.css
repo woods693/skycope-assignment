@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+app-root {
+    display: block;
+    height: 1000px;
+    width: 100%;
+    
+}
+
+.main-navbar{
+    background-color: white);
+    position: relative;
+}
+
+.navbar_logo{
+    height: 30px; 
+    position: relative;
+    left: 30px;
+}
+
+nav {
+    -webkit-box-shadow: 0 4px 6px -6px #222;
+    -moz-box-shadow: 0 4px 6px -6px #222;
+    box-shadow: 0 4px 6px -6px rgb(51,119,201);
+}
