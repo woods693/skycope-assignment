@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   };
 
   logging():  void{
-    console.log("After Logging Out " + localStorage['token'] + " " + localStorage['username'] + " " + localStorage['privilege']);
+    console.log("Is logged in " + localStorage['token'] + " " + localStorage['username'] + " " + localStorage['privilege']);
   }
 
   ngOnInit(): void {

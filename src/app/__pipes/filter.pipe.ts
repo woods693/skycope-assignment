@@ -5,13 +5,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform( log: string, keyword: string): any {
-    //console.log(log.split(" "));
+  transform(log: string, keyword: string): any{
     let temp: Array<string>;
     temp = log.toLowerCase().split(/[^\w\s]| /g);
-    //console.log(temp);
     if (temp.includes(keyword.toLowerCase()) || keyword === ""){
       return log;
-    }
-  }
+    };
+  };
 }

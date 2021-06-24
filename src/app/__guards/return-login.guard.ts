@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class ReturnLoginGuard implements CanActivate {
-  constructor(private auth: AuthenticationService, private router: Router){}
   canActivate(){
     if (!this.auth.isLoggedIn()){
       return true;
@@ -15,7 +14,8 @@ export class ReturnLoginGuard implements CanActivate {
       window.alert("Please logout before returning to Login page");
       this.router.navigate(['/logging']);
       return false;
-    }
-  }
-  
+    };
+  };
+
+  constructor(private auth: AuthenticationService, private router: Router){}
 }

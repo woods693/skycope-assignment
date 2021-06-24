@@ -15,7 +15,7 @@ export class LogService {
     //console.log(serviceNum);
     //console.log(this.Url.concat(serviceNum))
     return this.http.get<any>(this.Url.concat(serviceNum));
-  }
+  };
   constructor(private http: HttpClient) { }
 }
  

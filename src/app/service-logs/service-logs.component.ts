@@ -17,18 +17,16 @@ export class ServiceLogsComponent implements OnInit {
   //Logs that will be shown in the logViewer
   logs: string[] = []; //main array with all the logs from the backend
   
-  selected_service = "";
+  selected_service = '';
   filter_keyword = '';
   highlight_keyword = '';
 
+  //Subscription array to hold the subscriptions from the interval, can be unsubscribed upon logout
   subscription: Subscription[] = [];
 
-  //Function that will be calling on the Html get service
   getLogs(serviceNumber: string): void{
-    //console.log(serviceNumber);
     this.logService.getLogs(serviceNumber).subscribe(data => {
       this.logs = this.logs.concat((data as any).entry);
-      //console.log(this.logs)
     }); 
   };
 
@@ -36,27 +34,27 @@ export class ServiceLogsComponent implements OnInit {
     this.auth.logout().subscribe(data => {
       localStorage.setItem('token', (data as any).result)
       localStorage.setItem('logged-username', '')
-      this.subscription.forEach(element => element.unsubscribe());
+      this.subscription.forEach(element => element.unsubscribe()); //unsubscribe all intervals subscriptions
       this.router.navigate(['/login']);
     })
   };
 
   serviceSelector(selected: string): void{
-    //console.log(localStorage['token'] + " " + localStorage['logged-username']);
     if (this.selected_service != selected){
-      this.logs = [];
+      this.logs = []; //resets log array when switching service
       this.selected_service = selected;
-      //console.log(this.selected_service);
       this.subscription.push(interval(450).subscribe(() => this.getLogs(this.selected_service)));
     };
   };
 
+  //grabs the privilege value from the localStorage for the html
   getlocalStorage(id: string): string{
     return localStorage[id]
   }
 
+  //debugging
   logging():  void{
-    console.log("After Logging in " + localStorage['token'] + " as user " + localStorage['username'] + " " + localStorage['privilege']);
+    console.log("Is logged in " + localStorage['token'] + " as " + localStorage['username'] + " with " + localStorage['privilege']);
   }
 
   constructor( private logService: LogService, private auth: AuthenticationService, private router: Router ) { }

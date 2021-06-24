@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class LoggingGuard implements CanActivate {
-  constructor(private auth: AuthenticationService, private router: Router) {};
   
   canActivate(){
     if (this.auth.isLoggedIn()){
@@ -16,7 +15,8 @@ export class LoggingGuard implements CanActivate {
       window.alert("Not an autorized user, please login");
       this.router.navigate(['/login']);
       return false;
-    }
-  }
+    };
+  };
   
+  constructor(private auth: AuthenticationService, private router: Router) {};
 }

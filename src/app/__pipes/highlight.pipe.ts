@@ -6,12 +6,12 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class HighlightPipe implements PipeTransform {
 
-  constructor(private sanitizer: DomSanitizer){}
-  transform(log: any, keyword: string ){
+  transform(log: any, keyword: string){
     if(keyword != ""){ 
       return this.sanitizer.bypassSecurityTrustHtml(log.replace(new RegExp(`\\b(${keyword})\\b`, 'gi'), '<span style="background-color: yellow">' + `$1` + '</span>'));
     }
     return log;
-  }
+  };
 
+  constructor(private sanitizer: DomSanitizer){}
 }
