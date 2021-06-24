@@ -64,9 +64,9 @@ ul > .each_log {
 }
 /*Logout Button*/
 .logout-button{
-  position: absolute;
-  bottom: 20%;
-  right: 14%;
+  position: relative;
+  top: 20%;
+  left: 93%;
   color: white;
 }
 
