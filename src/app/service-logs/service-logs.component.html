@@ -2,7 +2,7 @@
     <button class="dropbtn"> {{ selected_service | uppercase}}</button>
     <div class="dropdown-content">
         <a class="service" (click)="serviceSelector('service1')">Service 1</a>
-        <a class="service" (click)="serviceSelector('service2')">Service 2</a>
+        <a *ngIf="getlocalStorage('privilege') == 'admin'" class="service" (click)="serviceSelector('service2')">Service 2</a>
     </div>
 </div>
 

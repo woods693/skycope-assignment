@@ -22,12 +22,13 @@ export class LoginComponent implements OnInit {
     this.auth.login(this.user).subscribe(data => {
       localStorage.setItem('token', (data as any).result)
       localStorage.setItem('username', (data as any).username)
+      localStorage.setItem('privilege', (data as any).privilege)
       this.router.navigate(['/logging']);
     });
   };
 
   logging():  void{
-    console.log("After Logging Out " + localStorage['token'] + " " + localStorage['username']);
+    console.log("After Logging Out " + localStorage['token'] + " " + localStorage['username'] + " " + localStorage['privilege']);
   }
 
   ngOnInit(): void {
